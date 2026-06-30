@@ -193,7 +193,7 @@ export default function ScholarshipApp() {
     const deadline = getDeadlineInfo(s.deadline);
     return (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-8 bg-black/40"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/40"
         onClick={() => setSelectedScholarship(null)}
       >
         <div
@@ -204,17 +204,17 @@ export default function ScholarshipApp() {
           {/* Close button — sits on the modal frame, stays visible while content scrolls */}
           <button
             onClick={() => setSelectedScholarship(null)}
-            className="absolute top-3 right-3 p-2 bg-white rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-50 border border-gray-200 shadow-sm z-20 transition-colors"
+            className="absolute top-3 right-3 p-2.5 bg-white rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-50 border border-gray-200 shadow-sm z-20 transition-colors"
             aria-label="Close"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </button>
 
           {/* Scrollable content */}
           <div className="overflow-y-auto">
-            <div className="px-8 pt-8 pb-6 border-b border-gray-100">
+            <div className="px-5 sm:px-8 pt-6 sm:pt-8 pb-5 sm:pb-6 border-b border-gray-100">
               <p className="text-xs uppercase tracking-wider text-gray-500 mb-2">{s.provider}</p>
-              <h2 className="text-2xl font-semibold text-gray-900 leading-snug pr-10 mb-4">
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 leading-snug pr-10 mb-4">
                 {s.name}
               </h2>
               <div className="flex flex-wrap items-center gap-2">
@@ -243,7 +243,7 @@ export default function ScholarshipApp() {
               </div>
             </div>
 
-            <div className="px-8 py-5 bg-amber-50 border-b border-gray-100 flex flex-wrap gap-x-10 gap-y-4">
+            <div className="px-5 sm:px-8 py-4 sm:py-5 bg-amber-50 border-b border-gray-100 flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-3 sm:gap-y-4">
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Award</p>
                 <p className="text-base font-semibold text-gray-900">{s.amount}</p>
@@ -270,7 +270,7 @@ export default function ScholarshipApp() {
               </div>
             </div>
 
-            <div className="px-8 py-6 space-y-6">
+            <div className="px-5 sm:px-8 py-5 sm:py-6 space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="h-3.5 w-0.5 bg-amber-500 rounded-full"></span>
@@ -328,7 +328,7 @@ export default function ScholarshipApp() {
               </div>
             </div>
 
-            <div className="px-8 py-5 border-t border-gray-100 bg-gray-50 flex flex-wrap items-center justify-between gap-3">
+            <div className="px-5 sm:px-8 py-4 sm:py-5 border-t border-gray-100 bg-gray-50 flex flex-wrap items-center justify-between gap-3">
               <a
                 href={s.official_link}
                 target="_blank"
@@ -424,7 +424,7 @@ export default function ScholarshipApp() {
                                 : "text-gray-700 hover:bg-amber-50"
                         }`}
                     >
-                      <span>{getSourceLabel(source)}</span>
+                      <span className="truncate mr-2">{getSourceLabel(source)}</span>
                       <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full font-medium min-w-[28px] text-center">
                 {sourceCounts[source]}
               </span>
@@ -439,30 +439,30 @@ export default function ScholarshipApp() {
   return (
     <div
       className="min-h-screen bg-white text-gray-900"
-      style={{ fontFamily: "ui-sans-serif, system-ui, -apple-system, sans-serif" }}
-    >
+      style={{ fontFamily: "ui-sans-serif, system-ui, -apple-system, sans-serif" }}>
       <header className="border-b border-gray-200 bg-white sticky top-0 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center gap-3 sm:gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-6">
           <button
               onClick={() => {
                 clearAllFilters();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="flex-shrink-0 hover:opacity-80 transition-opacity"
-              aria-label="Home">
-            <BookOpen className="h-7 w-7 text-amber-600" strokeWidth={1.75} />
+              className="flex-shrink-0 p-1 -m-1 hover:opacity-80 transition-opacity"
+              aria-label="Home"
+          >
+            <BookOpen className="h-6 w-6 sm:h-7 sm:w-7 text-amber-600" strokeWidth={1.75} />
           </button>
-          <div className="flex-1 max-w-2xl mx-auto relative">
-            <Search className="h-4 w-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
+          <div className="flex-1 max-w-2xl mx-auto relative min-w-0">
+            <Search className="h-4 w-4 text-gray-400 absolute left-3 sm:left-4 top-1/2 -translate-y-1/2" />
             <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search scholarships..."
-              className="w-full pl-11 pr-4 py-2.5 border border-gray-200 rounded-full text-sm placeholder:text-gray-400 focus:outline-none focus:border-amber-500"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search scholarships..."
+                className="w-full pl-9 sm:pl-11 pr-3 sm:pr-4 py-2 sm:py-2.5 border border-gray-200 rounded-full text-sm placeholder:text-gray-400 focus:outline-none focus:border-amber-500"
             />
           </div>
-          <nav>
+          <nav className="flex-shrink-0">
             <a
               href="#about"
               onClick={(e) => {
@@ -477,12 +477,12 @@ export default function ScholarshipApp() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-16 sm:pb-8">
         {/* Mobile filters button — only below xs */}
         <div className="xs:hidden mb-4 flex items-center justify-between">
           <button
               onClick={() => setMobileFiltersOpen(true)}
-              className="flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-amber-400">
+              className="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-md text-sm text-gray-700 hover:border-amber-400">
             <Filter className="h-4 w-4" />
             Filters
             {activeFilterCount > 0 && (
@@ -530,7 +530,7 @@ export default function ScholarshipApp() {
                     <article
                       key={s.id}
                       onClick={() => setSelectedScholarship(s)}
-                      className="group p-5 border border-gray-200 rounded-lg hover:border-amber-400 hover:shadow-sm transition-all cursor-pointer bg-white flex flex-col"
+                      className="group p-4 sm:p-5 border border-gray-200 rounded-lg hover:border-amber-400 hover:shadow-sm transition-all cursor-pointer bg-white flex flex-col"
                     >
                       <p className="text-xs uppercase tracking-wider text-gray-500 mb-2">
                         {s.provider}
@@ -571,7 +571,7 @@ export default function ScholarshipApp() {
           </section>
         </div>
 
-        <section id="about" className="mt-24 pt-12 border-t border-gray-200">
+        <section id="about" className="mt-16 sm:mt-24 pt-8 sm:pt-12 border-t border-gray-200">
           <div className="flex items-center gap-2 mb-4">
             <span className="h-4 w-0.5 bg-amber-500 rounded-full"></span>
             <h2 className="text-xl font-semibold text-gray-900">About</h2>
